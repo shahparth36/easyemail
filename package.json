@@ -1,6 +1,6 @@
 {
-    "name": "@shahparth36/mailservice",
-    "version": "1.0.6",
+    "name": "easynodemailer",
+    "version": "2.0.0",
     "main": "email/index.js",
     "bin": "email/index.js",
     "scripts": {
@@ -17,5 +17,8 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/shahparth36/easyemail.git"
+    },
+    "dependencies": {
+        "nodemailer": "^6.5.0"
     }
 }
