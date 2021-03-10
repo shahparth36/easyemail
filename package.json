@@ -1,6 +1,6 @@
 {
     "name": "@shahparth36/mailservice",
-    "version": "1.0.0",
+    "version": "1.0.6",
     "main": "email/index.js",
     "bin": "email/index.js",
     "scripts": {
