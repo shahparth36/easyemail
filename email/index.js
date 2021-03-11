@@ -1,23 +1,35 @@
 const nodemailer = require("nodemailer");
 
-async function sendEmail(email, subjectOfEmail, textToBeSentInEmail) {
-    var transporter = nodemailer.createTransport({
+class EmailService {
+    constructor(authenticationEmail, authenticationPassword, authenticationAccountName) {
+        this.authenticationEmail = authenticationEmail;
+        this.authenticationPassword = authenticationPassword;
+        this.authenticationAccountName = authenticationAccountName;
+    }
+
+    sendEmail(emailIDToBeSentTo,subjectOfEmail, textToBeSentInEmail) {
+        var transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
         service: "Gmail",
         auth: {
-            user: 'parthshah1936@gmail.com',
-            pass: 'adgzcbqet19',
+            user: this.authenticationEmail,
+            pass: this.authenticationPassword,
         },
     });
 
     transporter.sendMail({
-        from: 'smartexamportal@gmail.com',
-        to: email,
+        from: `${this.authenticationAccountName} <${this.authenticationEmail}>`,
+        to: emailIDToBeSentTo,
         subject: subjectOfEmail,
         text: textToBeSentInEmail
+    }, (err, result) => {
+        if (err)
+            console.log(err);
+        else
+            console.log(result);
+        transporter.close();
     });
+    }
+}
 
-    transporter.close();
-}
-module.exports = {
-    sendEmail
-}
+module.exports = EmailService;
